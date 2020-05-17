@@ -1,0 +1,12 @@
+# Enter Kafka docker container:
+ docker exec -it kafka /bin/bash
+
+
+# Create topic:
+kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic movieRatings
+kafka-topics.sh --list --zookeeper zookeeper:2181
+
+
+# Test:
+kafka-console-producer.sh --broker-list kafka:9092 --topic dbserver1.test.local
+kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic dbserver1.test.local --from-beginning
